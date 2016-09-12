@@ -1,0 +1,59 @@
+<!doctype html>
+
+<head>
+	<script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>	
+	<style> #mychart {    
+		margin:10px;    
+		width:90%; 
+		max-width: 800px; 
+		height:400px; 
+		} 
+	</style>
+
+</head>
+
+
+<body>
+	<div id="mychart"></div>
+
+
+	<script type="text/javascript"> 
+	(function() {    
+		YUI().use('charts', function (Y){         
+			//dataProvider source        
+			var myDataValues = [         
+			{date:"January" , windows:2000, mac:800, linux:200},         
+			{date:"February", windows:3000, mac:1200, linux:300},         
+			{date:"March"  , windows:3500, mac:1900, linux:1400},         
+			{date:"April"  , windows:3000, mac:2800, linux:200},         
+			{date:"May"    , windows:1500, mac:3500, linux:700},        
+			{date:"June"    , windows:2000, mac:3000, linux:250}        
+			 ];               
+			 //Define our axes for the chart.        
+			 var myAxes = {
+
+            financials:{                
+            	keys:["windows", "mac", "linux"],                
+            	position:"right", type:"numeric"            
+            },            
+            dateRange:{                
+            	keys:["date"],                
+            	position:"bottom",type:"category"            
+            }        
+        };
+ 
+        //instantiate the chart        
+        var myChart = new Y.Chart({            
+        	type:"column", categoryKey:"date",            
+        	dataProvider:myDataValues, axes:myAxes,             
+        	horizontalGridlines: true,            
+        	verticalGridlines: true,            
+        	render:"#mychart"        
+        	});    
+        	}); 
+        	})();
+    </script>
+
+</body>
+
+</html>
